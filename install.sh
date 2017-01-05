@@ -29,8 +29,8 @@ for BASE in centos ubuntu; do
     docker run --rm \
       -v /var/run/docker.sock:/var/run/docker.sock:rw \
       -v /home/harbor/.docker/config.json:/root/.docker/config.json:ro \
-      -e BASE=centos \
-      -e TYPE=source \
+      -e BASE=\${BASE} \
+      -e TYPE=\${TYPE} \
       -e NAMESPACE=kolla \
       -e TAG=master \
       port/kolla-cron-builder
