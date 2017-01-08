@@ -10,7 +10,7 @@ mkdir -p /etc/kolla
 mv -v etc/kolla/kolla-build.conf /etc/kolla
 
 echo "Crude cleanup of old images"
-docker images | grep kolla/centos-source | grep " master " | xargs -l1 docker rmi
+docker images | grep ${NAMESPACE}/${BASE}-${TYPE} | grep " ${TAG} " | xargs -l1 docker rmi
 
 echo "Building & pushing kolla images"
 echo "*******************************"
