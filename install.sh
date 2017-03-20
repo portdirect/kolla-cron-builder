@@ -28,7 +28,7 @@ for BASE in centos ubuntu; do
   for TYPE in source binary; do
     docker run --rm \
       -v /var/run/docker.sock:/var/run/docker.sock:rw \
-      -v /home/root/.docker/config.json:/root/.docker/config.json:ro \
+      -v /root/.docker/config.json:/root/.docker/config.json:ro \
       -e BASE=\${BASE} \
       -e TYPE=\${TYPE} \
       -e NAMESPACE=kolla \
