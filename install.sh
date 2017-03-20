@@ -8,7 +8,7 @@ cat > /etc/systemd/system/build-kolla-master.service <<EOF
 Description=Builds Kolla Master
 [Service]
 Type=simple
-User=harbor
+User=root
 ExecStart=/usr/local/bin/build-kolla-master
 EOF
 
@@ -28,7 +28,7 @@ for BASE in centos ubuntu; do
   for TYPE in source binary; do
     docker run --rm \
       -v /var/run/docker.sock:/var/run/docker.sock:rw \
-      -v /home/harbor/.docker/config.json:/root/.docker/config.json:ro \
+      -v /home/root/.docker/config.json:/root/.docker/config.json:ro \
       -e BASE=\${BASE} \
       -e TYPE=\${TYPE} \
       -e NAMESPACE=kolla \
